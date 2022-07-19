@@ -6,9 +6,9 @@ import java.util.List;
 public class PascalsTrianlge {
 
     //5th row banate hole 3rd row r list use korte hobe
-    //4th row banate hole 2rd row r list use korte hobe
+    //4th row banate hole 2nd row r list use korte hobe
 
-    // mane jei row banabo tar theke 1 - minus korte hobe
+    // mane jei row banabo tar theke 2 - minus korte hobe
 
 
     public static   List<List<Integer>> generate(int numRows) {
