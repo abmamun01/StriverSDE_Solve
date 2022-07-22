@@ -26,7 +26,7 @@ public class MergeOverlapping {
         System.out.println("END  " + end + "    INTERVERLS   " + intervals[0][1]);
         System.out.println("START  " + start + "    INTERVERLS    " + intervals[0][0]);
 
-        // i = row  not value idx
+        // i = row
         int i = 1;
         while (i < intervals.length) {
 

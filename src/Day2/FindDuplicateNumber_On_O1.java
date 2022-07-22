@@ -4,7 +4,6 @@ import java.util.Arrays;
 
 public class FindDuplicateNumber_On_O1 {
 
-    // Big O(N) S: Big O(1)
     /**
      Rules:
      First element ye jabe tarpor j value thakbe oi idx ye sei
@@ -49,7 +48,9 @@ public class FindDuplicateNumber_On_O1 {
     }
 
     public static void main(String[] args) {
-        int[] arr = {1, 3, 4, 2,2};
+
+        int[] arr = {1, 3, 4, 2, 8, 9, 8};
+
 
         System.out.println((findDuplicate(arr)));
 
