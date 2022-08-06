@@ -23,6 +23,20 @@ public class FindMiddleOfLinkedList {
 
     ListNode middleNode(ListNode head) {
 
+
+        ListNode slowNode = head, fastNode = head;
+
+        while (fastNode != null && fastNode.next != null) {
+
+            fastNode = fastNode.next.next;
+            slowNode = slowNode.next;
+        }
+
+        return slowNode;
+    }
+
+/*    ListNode middleNode(ListNode head) {
+
         ListNode slow = head, fast = head;
 
         while (fast != null && fast.next != null) {
@@ -32,7 +46,7 @@ public class FindMiddleOfLinkedList {
             fast = fast.next.next;
         }
         return slow;
-    }
+    }*/
 
 
 }
