@@ -22,6 +22,7 @@ public class CombinationSum {
         // If k is equal to 0, we have generated a Valid Subset of K length
         if (k == 0) {
             ans.add(new ArrayList<>(subList));
+            return;
         }
 
         // If we don't have enough elements to make our subset, we shouldn't proceed further
