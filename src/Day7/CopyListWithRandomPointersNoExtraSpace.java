@@ -1,3 +1,4 @@
+/*
 package Day7;
 
 public class CopyListWithRandomPointersNoExtraSpace {
@@ -14,7 +15,8 @@ public class CopyListWithRandomPointersNoExtraSpace {
         }
     }
 
-    public Node copyList(Node head) {
+*/
+/*    public Node copyList(Node head) {
         Node temp = head;
         // jate temp k samne barale o location thik thake , tai next use korechi
         Node next = head.next;
@@ -28,7 +30,8 @@ public class CopyListWithRandomPointersNoExtraSpace {
             //next will become next.next
             if (next != null) next = next.next;
         }
-    }
+    }*//*
+
 
     void handleRandom(Node head) {
         Node temp = head;
@@ -44,3 +47,4 @@ public class CopyListWithRandomPointersNoExtraSpace {
         copyList(head);
     }
 }
+*/
