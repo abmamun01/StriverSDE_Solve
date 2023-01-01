@@ -1,10 +1,9 @@
 package Recursion;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
-public class CombinationSum {
+public class Combination {
 
     public List<List<Integer>> combine(int n, int k) {
 
