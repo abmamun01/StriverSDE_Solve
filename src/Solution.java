@@ -1,34 +1,35 @@
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import Tree.ConvertSortedArrayToBinaryTree;
+import sun.reflect.generics.tree.Tree;
+
+import java.util.*;
 
 public class Solution {
+    public int findCircleNum(int[][] isConnected) {
 
-    public List<List<Integer>> subsetsWithDup(int[] nums) {
+        boolean visited[] = new boolean[isConnected.length];
 
-        Arrays.sort(nums);
-        List<List<Integer>> ans = new ArrayList<>();
-        List<Integer> subSet = new ArrayList<>();
+        int count = 0;
 
-        helperFunc(0, nums, subSet, ans);
-        return ans;
+        ArrayList<Integer> list = new ArrayList<>();
 
+        for (int i = 0; i < isConnected.length; i++) {
 
+            dfsT(0, visited, list, isConnected);
+            count++;
+        }
+
+        return count;
     }
 
-    private void helperFunc(int idx, int[] nums, List<Integer> subSet, List<List<Integer>> ans) {
+    private void dfsT(int node, boolean[] visited, ArrayList<Integer> list, int[][] isConnected) {
 
-        if (idx == nums.length) {
-            ans.add(new ArrayList<>(subSet));
-        } else {
+        visited[node] = true;
 
-            subSet.add(nums[idx]);
+        for (int i = 0; i < isConnected.length; i++) {
+            if ( visited[i] == false) {
+                dfsT(node, visited, list, isConnected);
+            }
 
-            while (idx + 1 < nums.length && nums[idx] == nums[idx + 1]) idx++;
-            helperFunc(idx + 1, nums, subSet, ans);
-            subSet.remove(subSet.size() - 1);
-
-            helperFunc(idx + 1, nums, subSet, ans);
         }
     }
 }//end of class
