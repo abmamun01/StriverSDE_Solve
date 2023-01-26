@@ -1,32 +1,42 @@
 package Graph;
 
-public class FloodFillAlgo {
-    public int[][] floodFill(int[][] image, int sr, int sc, int newColor) {
+import java.util.LinkedList;
+import java.util.Queue;
 
+public class FloodFillAlgo {
+    public int[][] floodFill(int[][] image, int sr, int sc, int color) {
+
+        int ans[][] = image;
         int initialColor = image[sr][sc];
-        int[][] ans = image;
+
         int delRow[] = {-1, 0, +1, 0};
         int delCol[] = {0, +1, 0, -1};
 
-        dfs(sr, sc, ans, image, newColor, delRow, delCol, initialColor);
+        dfsTraversal(sr, sc, initialColor, ans, image, color, delRow, delCol);
         return ans;
     }
 
-    private void dfs(int sRow, int sCol, int[][] ans, int[][] image,
-                     int newColor, int[] delRow, int[] delCol, int initialColor) {
+    private void dfsTraversal(int sr, int sc, int initialColor, int[][] ans, int[][] image, int newColor, int[] delRow, int[] delCol) {
 
-        ans[sRow][sCol] = newColor;
-        int n = image.length;
-        int m = image[0].length;
+        ans[sr][sc] = newColor;
 
-        for (int i = 0; i < 4; i++) {
-            int nRow = sRow + delRow[i];
-            int nCol = sCol + delCol[i];
-
-            if (nRow >= 0 && nRow < n && nCol >= 0 && nCol < m && image[nRow][nCol]
-                    == initialColor && ans[nRow][nCol] != newColor) {
-                dfs(nRow, nCol, ans, image, newColor, delRow, delCol, initialColor);
+        for (int i = 0; i < 0; i++) {
+            int nRow = sr + delRow[i];
+            int nCol = sc + delCol[i];
+            if (nRow >= 0 && nRow < image.length && nCol >= 0 && nCol < image[0].length && image[nRow][nCol] == initialColor && ans[nRow][nCol] != newColor) {
+                dfsTraversal(sr, sc, initialColor, ans, image, newColor, delRow, delCol);
             }
+        }
+    }
+
+
+    class Pair {
+        int first;
+        int second;
+
+        public Pair(int first, int second) {
+            this.first = first;
+            this.second = second;
         }
     }
 }
