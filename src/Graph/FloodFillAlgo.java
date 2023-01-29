@@ -4,39 +4,43 @@ import java.util.LinkedList;
 import java.util.Queue;
 
 public class FloodFillAlgo {
-    public int[][] floodFill(int[][] image, int sr, int sc, int color) {
+    public int numEnclaves(int[][] grid) {
 
-        int ans[][] = image;
-        int initialColor = image[sr][sc];
 
-        int delRow[] = {-1, 0, +1, 0};
-        int delCol[] = {0, +1, 0, -1};
+        int n = grid.length;
+        int m = grid[0].length;
 
-        dfsTraversal(sr, sc, initialColor, ans, image, color, delRow, delCol);
-        return ans;
-    }
+        int result[][] = grid;
+        boolean visited[][] = new boolean[n][m];
 
-    private void dfsTraversal(int sr, int sc, int initialColor, int[][] ans, int[][] image, int newColor, int[] delRow, int[] delCol) {
+        Queue<Pair> queue = new LinkedList<>();
 
-        ans[sr][sc] = newColor;
+        for (int j = 0; j < n; j++) {
+            // first row
+            if (grid[0][j] == 1 && !visited[0][j]) {
 
-        for (int i = 0; i < 0; i++) {
-            int nRow = sr + delRow[i];
-            int nCol = sc + delCol[i];
-            if (nRow >= 0 && nRow < image.length && nCol >= 0 && nCol < image[0].length && image[nRow][nCol] == initialColor && ans[nRow][nCol] != newColor) {
-                dfsTraversal(sr, sc, initialColor, ans, image, newColor, delRow, delCol);
+                queue.add(new Pair(0, j));
+            }
+            // last col
+            if (grid[n - 1][j] == 1 && !visited[n - 1][j]) {
+                queue.add(new Pair(n - 1, j));
+
             }
         }
-    }
 
+        for (int i = 0; i < m; i++) {
 
-    class Pair {
-        int first;
-        int second;
-
-        public Pair(int first, int second) {
-            this.first = first;
-            this.second = second;
         }
     }
+
+    class Pair {
+        int row;
+        int col;
+
+        public Pair(int row, int col) {
+            this.row = row;
+            this.col = col;
+        }
+    }
+
 }
