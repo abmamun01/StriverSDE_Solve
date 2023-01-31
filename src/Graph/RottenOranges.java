@@ -41,22 +41,22 @@ public class RottenOranges {
 
         while (!queue.isEmpty()) {
 
-            int inRow = queue.peek().row;
-            int inCol = queue.peek().column;
-            int inTime = queue.peek().time;
+            int qRow = queue.peek().row;
+            int qCol = queue.peek().column;
+            int qTime = queue.peek().time;
 
-            time = Math.max(time, inTime);
+            time = Math.max(time, qTime);
             queue.remove();
 
             for (int i = 0; i < 4; i++) {
-                int nRow = inRow + delRow[i];
-                int nCol = inCol + delCol[i];
+                int nRow = qRow + delRow[i];
+                int nCol = qCol + delCol[i];
 
                 if (nRow >= 0 && nRow < grid.length && nCol >= 0 && nCol < grid[0].length
                         && !visited[nRow][nCol] && grid[nRow][nCol] == 1) {
 
                     count++;
-                    queue.add(new Pair(nRow, nCol, inTime + 1));
+                    queue.add(new Pair(nRow, nCol, qTime + 1));
                     visited[nRow][nCol] = true;
 
                 }
