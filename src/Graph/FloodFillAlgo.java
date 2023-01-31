@@ -4,33 +4,51 @@ import java.util.LinkedList;
 import java.util.Queue;
 
 public class FloodFillAlgo {
-    public int numEnclaves(int[][] grid) {
+    class Solution {
+        public int[][] floodFill(int[][] image, int sr, int sc, int newColor) {
+
+            int n = image.length;
+            int m = image[0].length;
+
+            int initialColor=image[sr][sc];
+            boolean visited[][] = new boolean[n][m];
+            int result[][] = image;
 
 
-        int n = grid.length;
-        int m = grid[0].length;
+            int delRow[] = {-1, 0, +1, 0};
+            int delCol[] = {0, +1, 0, -1};
 
-        int result[][] = grid;
-        boolean visited[][] = new boolean[n][m];
 
-        Queue<Pair> queue = new LinkedList<>();
 
-        for (int j = 0; j < n; j++) {
-            // first row
-            if (grid[0][j] == 1 && !visited[0][j]) {
+            dfsTraversal(sr, sc, delRow, delCol, visited, image, result, newColor,initialColor);
 
-                queue.add(new Pair(0, j));
-            }
-            // last col
-            if (grid[n - 1][j] == 1 && !visited[n - 1][j]) {
-                queue.add(new Pair(n - 1, j));
 
-            }
+
+            return result;
         }
 
-        for (int i = 0; i < m; i++) {
+        private void dfsTraversal(int givenRow, int givenCol, int[] delRow, int[] delCol, boolean[][] visited, int[][] image, int[][] result, int newColor,int initialColor) {
+
+            visited[givenRow][givenCol] = true;
+            result[givenRow][givenCol] = newColor;
+
+            for (int i = 0; i < 4; i++) {
+
+                int nRow = givenRow + delRow[i];
+                int nCol = givenCol + delCol[i];
+
+                if (nRow >= 0 && nRow < image.length && nCol >= 0 && nCol < image[0].length
+                        && !visited[nRow][nCol] && image[nRow][nCol] == initialColor) {
+
+                    visited[nRow][nCol] = true;
+                    result[nRow][nCol] = newColor;
+                    dfsTraversal(nRow, nCol, delRow, delCol, visited, image, result,newColor,initialColor);
+
+                }
+            }
 
         }
+
     }
 
     class Pair {
@@ -42,5 +60,6 @@ public class FloodFillAlgo {
             this.col = col;
         }
     }
+
 
 }
