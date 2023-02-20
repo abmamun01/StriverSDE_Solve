@@ -5,6 +5,9 @@ import java.util.Stack;
 
 public class TopologicalSort {
     //Function to return list containing vertices in Topological order.
+    // whose dfs is completed (when backtracking), store it in stack
+    //
+    //
     static int[] topoSort(int V, ArrayList<ArrayList<Integer>> adj) {
 
         boolean visited[] = new boolean[V];
